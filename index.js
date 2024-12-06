@@ -15,12 +15,7 @@ server.listen(process.env.PORT || 3978, () => {
 server.post('/api/messages', (req, res, next) => {
   adapter.processActivity(req, res, async (context) => {
     if (context.activity.type === 'message') {
-      await context.sendActivity(`
-        I'm an echo bot created by Marker DAO (mark_nikolsky@outlook.com) for testing purposes only.
-        You said:
-        \n
-        ${context.activity.text}
-      `);
+      await context.sendActivity(`I'm an echo bot created by Marker DAO (mark_nikolsky@outlook.com) for testing purposes only. You said: ${context.activity.text}`);
     }
   });
 
