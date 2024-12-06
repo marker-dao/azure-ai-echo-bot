@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fast-push": "az webapp up --name my-echo-bot --resource-group marker-dao-ai-chat --runtime \"NODE|18-lts\"",
+    "log": "az webapp log tail --name my-echo-bot --resource-group marker-dao-ai-chat  ",
+    "zip": "zip -r app.zip .",
+    "deploy": "az webapp deployment source config-zip --resource-group marker-dao-ai-chat --name my-echo-bot --src app.zip"
   },
   "keywords": [],
   "author": "Marker DAO",
   "license": "ISC",
   "dependencies": {
     "botbuilder": "^4.23.1",
-    "restify": "^11.1.0"
+    "express": "^4.21.2"
   }
 }
