@@ -1,4 +1,4 @@
-const restify = require('restify');
+const express = require('express');
 const { BotFrameworkAdapter } = require('botbuilder');
 
 const adapter = new BotFrameworkAdapter({
@@ -6,18 +6,19 @@ const adapter = new BotFrameworkAdapter({
   appPassword: process.env.MicrosoftAppPassword || ''
 });
 
-const server = restify.createServer();
+const app = express();
+app.use(express.json());
 
-server.listen(process.env.PORT || 3978, () => {
-  console.log(`\nServer running on port ${server.url}`);
+const port = process.env.PORT || 3978;
+
+app.listen(port, () => {
+  console.log(`\nServer running on port ${port}`);
 });
 
-server.post('/api/messages', (req, res, next) => {
+app.post('/api/messages', (req, res) => {
   adapter.processActivity(req, res, async (context) => {
     if (context.activity.type === 'message') {
       await context.sendActivity(`I'm an echo bot created by Marker DAO (mark_nikolsky@outlook.com) for testing purposes only. You said: ${context.activity.text}`);
     }
   });
-
-  next();
 });
