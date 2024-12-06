@@ -8,7 +8,7 @@ const adapter = new BotFrameworkAdapter({
 
 const server = restify.createServer();
 
-server.listen(process.env.PORT || process.env.port || 8080, () => {
+server.listen(process.env.PORT || 8080, () => {
   console.log(`\nServer running on port ${server.url}`);
 });
 
