@@ -1,0 +1,17 @@
+{
+  "name": "my-echo-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Marker DAO",
+  "license": "ISC",
+  "dependencies": {
+    "botbuilder": "^4.23.1",
+    "restify": "^11.1.0"
+  }
+}
